@@ -1,7 +1,7 @@
 # What is sas-appfitter?
 Adapters that use a generic interface to allow SAS programs to pass datasets to and from other environments, data sources and languages.
 
-The idea is to make it simple to develop applications powered by SAS by providing interfaces and architecture up-front for a variety of languages, connections types and datastores.
+The idea is to simplify SAS-powered app prototype development by providing interfaces and architecture up-front for a variety of languages, connections types and datastores.
 
 When the requirements of your application change, the adapters can be switched without having to modify the existing programs. 
 
