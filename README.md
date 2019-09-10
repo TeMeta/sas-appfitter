@@ -23,7 +23,16 @@ The folder structure organises them first by the language, then by connection ty
 │   │   ├── ffs
 │   │   ├── h54s
 │   │   ├── ...    
+│   ├── python
+│   │   ├── ffs
+│   │   ├── ...
 │   ├── vba
+│   │   ├── ffs
+│   │   ├── ...
+│   ├── mysql
+│   │   ├── ffs
+│   │   ├── ...
+│   ├── postgresql
 │   │   ├── ffs
 │   │   ├── ...
 │   ├── ...  
@@ -32,7 +41,7 @@ The folder structure organises them first by the language, then by connection ty
 
 ## Flat File Simulation (ffs)
 This repository introduces Flat File Simulation, a standalone local prototyping environment. 
-Flat File Simulator allows you to develop application prototypes free of dependencies on IT and various software licenses, while using the same sas-appfitter generic interface functions so that any code you write will be portable to other environments when the time comes to scale up.
+FFS allows you to develop application prototypes free of dependencies on IT and various software licenses, while using the same sas-appfitter generic interface functions so that any code you write will be portable to other environments when the time comes to scale up.
 
 
 The 'flat files' are SAS datasets serialised to, and deserialised from, JSON files stored locally. 
@@ -53,7 +62,7 @@ sas-appfitter may include adapters that have dependencies on other packages, and
 
 This project is under the Apache v2.0 license.
 
-In the spirit of open-source, you are encouraged to share modifications and improvements back to this repository. 
+In the spirit of open-source, you are encouraged to use this code provided that you share modifications and improvements back to this repository. 
 
 If you can't find one of the adapters you need, develop a new adapter and plug in to the appfitter ecosystem. 
 The better the collection of adapters here, the easier it will make it to develop applications with SAS
