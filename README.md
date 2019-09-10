@@ -18,6 +18,7 @@ The folder structure organises them first by the language, then by connection ty
 │   │   ├── ffs             # Connection using Flat File Simulation
 │   │   ├── h54s            # Connection using Boemska HTML5 Adapter for SAS
 │   │   ├── viya            # Connection using SAS Viya
+│   │   ├── saspy           # Connection using SASPy
 │   │   ├── ...             
 │   ├── javascript
 │   │   ├── ffs
@@ -25,6 +26,7 @@ The folder structure organises them first by the language, then by connection ty
 │   │   ├── ...    
 │   ├── python
 │   │   ├── ffs
+│   │   ├── saspy          
 │   │   ├── ...
 │   ├── vba
 │   │   ├── ffs
