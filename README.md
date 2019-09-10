@@ -1,5 +1,5 @@
-# sas-appfitter
-Connectors that use a generic interface to allow SAS programs to pass datasets to and from other environments, data sources and languages.
+# What is sas-appfitter?
+Adapters that use a generic interface to allow SAS programs to pass datasets to and from other environments, data sources and languages.
 
 The idea is to make it simple to develop applications powered by SAS by providing interfaces and architecture up-front for a variety of languages, connections types and datastores.
 
@@ -15,7 +15,7 @@ The folder structure organises them first by the language, then by connection ty
 ├── ...
 ├── adapters                # All interface adapters
 │   ├── sas                 # Adapters for the SAS environment
-│   │   ├── ffs             # Connection using Flat File Simulator
+│   │   ├── ffs             # Connection using Flat File Simulation
 │   │   ├── h54s            # Connection using Boemska HTML5 Adapter for SAS
 │   │   ├── viya            # Connection using SAS Viya
 │   │   ├── ...             
@@ -31,16 +31,18 @@ The folder structure organises them first by the language, then by connection ty
 
 
 ## Flat File Simulation (ffs)
-This repository introduces Flat File Simulatoin, a standalone local prototyping environment. 
-Flat File Simulator allows you to develop application prototypes free of dependencies on IT and various software licenses.
+This repository introduces Flat File Simulation, a standalone local prototyping environment. 
+Flat File Simulator allows you to develop application prototypes free of dependencies on IT and various software licenses, while using the same sas-appfitter generic interface functions so that any code you write will be portable to other environments when the time comes to scale up.
+
+
+The 'flat files' are SAS datasets serialised to, and deserialised from, JSON files stored locally. 
+Variations are used for simulating a client-server connection (inspired by [H54S](https://github.com/Boemska/h54s)) and writing to a persistent datastore (inspired by [Pickle](https://github.com/python/cpython/blob/3.7/Lib/pickle.py))
+
 
 Select the ffs family of adapters if you are developing a prototype
 1. No dependencies on SAS licenses beyond SAS BASE 9.4
 2. No need to set up a webserver or database - uses local files instead to simulate the same functionality
 3. Uses the appfitter interface so that other functionality can easily be plugged in later 
-
-The 'flat files' are SAS datasets serialised to, and deserialised from, JSON files stored locally. 
-Variations are used for simulating a client-server connection (inspired by [H54S](https://github.com/Boemska/h54s)) and writing to a persistent datastore (inspired by [Pickle](https://github.com/python/cpython/blob/3.7/Lib/pickle.py))
 
 
 ## Licensing
@@ -53,5 +55,6 @@ This project is under the Apache v2.0 license.
 
 In the spirit of open-source, you are encouraged to share modifications and improvements back to this repository. 
 
-If you can't find one of the adapters you need, develop a new adapter and plug in to the appfitter ecosystem. The better the collection of adapters here, the easier it will make it to develop applications with SAS
+If you can't find one of the adapters you need, develop a new adapter and plug in to the appfitter ecosystem. 
+The better the collection of adapters here, the easier it will make it to develop applications with SAS
 
