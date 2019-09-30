@@ -2,7 +2,7 @@
 
 
 ## What is sas-appfitter?
-A collection of adapters that use a generic interface to allow SAS® programs to pass datasets to and from other environments, data sources and languages.
+A collection of adapters that use a generic interface to allow SAS® programs to pass datasets (flat tables of strings and numerics) to and retrieve them from other environments, data sources and languages.
 
 The idea is to simplify SAS-powered app prototype development by providing interfaces and architecture up-front for a variety of languages, connections types and datastores. Appfitter was inspired by [H54S from Boemska](https://github.com/Boemska/h54s) and builds on the concept by extending it into a collection of compatible connectors
 
@@ -75,25 +75,41 @@ Select the ffe family of adapters if you are developing a prototype
 
 ## Generic Interface Methods
 
-These are shown in the form of SAS macros since this project started with SAS adapters. The same principle applies to functions/methods in other languages.
+The use of generic interface methods allows the same programs to connect with any number of different component connections
+
+These are shown in the form of SAS macros since this project started with SAS adapters. The same principle can also apply to functions/methods in other languages.
 
 SAS adapters receive datasets that have been passed from other components in the application that were built using a non-SAS platform. What they all have in common is the protocol of passing flat tables rather than parameters. If parameters need to be passed they can be packed into rows or columns instead.
 
 ```sas
-%macro getStreamDset(obj=, outdset=)
+%macro getStreamDset(obj=, outdset=);
 ```
-Establish a datastore connection. `name` is the reference given to the created datastore and `targ` is a string (e.g. a name or query) describing which target in the datastore is selected. 
+Deserialise the application's input to the SAS procedure into a SAS dataset. `obj` is the name of the object (e.g. if the input is in the form of multiple JSON tables, the name of the table). `outdset` is the dataset created from the content.
 
 ```sas
-%macro setupDatastore(name=, targ=)
+%macro setStreamDset(obj=, indset=);
 ```
-Establish a datastore connection. `name` is the reference given to the created datastore and `targ` is a string (e.g. a name or query) describing which target in the datastore is selected. 
+Take the dataset `indset` that was generated in the SAS process, serialise it to object named `obj`, and feed it back to the application.
+
+```sas
+%macro setupDatastore(name=, targ=);
+```
+Establish a datastore connection. `name` is the reference (up to 8 letters) given to the created datastore and `targ` is a string (e.g. a name or query) describing which target in the datastore is selected. 
 
 ```sas
 %macro teardownDatastore(name=);
 ```
-This cleans up and closes the named datastore connection if necessary.
+This cleans up and closes the named datastore connection as necessary.
 
+```sas
+%macro getDatastoreDset(name=, obj=, outdset=);
+```
+Read table `obj` from the named datastore `name` and put its contents into a dataset `outdset`
+
+```sas
+%macro setDatastoreDset(name=, obj=, indset=);
+```
+Take dataset `indset` and write it to table `obj` in the named datastore `name`
 
 ## Links to available adapters
 
