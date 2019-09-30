@@ -20,7 +20,7 @@ The folder structure organises them first by connection type, then by language (
 ├── adapters              # All interface adapters
 │   ├── ffe                 # Connection using Flat File Emulation
 │   │   ├── sas               # Adapters for the SAS environment
-│   │   ├── javascript        # Adapters for the SAS environment
+│   │   ├── javascript
 │   │   ├── python          
 │   │   ├── vba
 │   │   ├── ...             
