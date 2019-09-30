@@ -1,5 +1,8 @@
-# What is sas-appfitter?
-Adapters that use a generic interface to allow SAS programs to pass datasets to and from other environments, data sources and languages.
+# sas-appfitter
+
+
+## What is sas-appfitter?
+Adapters that use a generic interface to allow SAS® programs to pass datasets to and from other environments, data sources and languages.
 
 The idea is to simplify SAS-powered app prototype development by providing interfaces and architecture up-front for a variety of languages, connections types and datastores.
 
@@ -8,52 +11,64 @@ When the requirements of your application change, the adapters can be switched w
 Database type, API connections and even the entire front-end can be swapped out. Adapters to the generic interface provide flexibility for your application/prototype, which should in turn significantly reduce the cost of development and migration on your app.
 
 
-The folder structure organises them first by the language, then by connection type
+## Finding your way around
+
+The folder structure organises them first by connection type, then by language (the below is for illustrative purposes)
 
 ```
 .
 ├── ...
 ├── adapters                # All interface adapters
-│   ├── sas                 # Adapters for the SAS environment
-│   │   ├── ffs             # Connection using Flat File Simulation
-│   │   ├── h54s            # Connection using Boemska HTML5 Adapter for SAS
-│   │   ├── viya            # Connection using SAS Viya
-│   │   ├── saspy           # Connection using SASPy
+│   ├── ffe                   # Connection using Flat File Emulation
+│   │   ├── sas                 # Adapters for the SAS environment
+│   │   ├── javascript          # Adapters for the SAS environment
+│   │   ├── python          
+│   │   ├── vba
 │   │   ├── ...             
-│   ├── javascript
-│   │   ├── ffs
-│   │   ├── h54s
+│   ├── h54s               # Connection using Boemska HTML5 Adapter for SAS
+│   │   ├── sas
+│   │   ├── javascript
 │   │   ├── ...    
-│   ├── python
-│   │   ├── ffs
-│   │   ├── saspy          
+│   ├── pandas             # Connection using Pandas
+│   │   ├── sas
+│   │   ├── python          
 │   │   ├── ...
-│   ├── vba
-│   │   ├── ffs
+│   ├── viya               # Connection using SAS Viya
+│   │   ├── sas
 │   │   ├── ...
-│   ├── mysql
-│   │   ├── ffs
+│   ├── saspy              # Connection using SASPy
+│   │   ├── sas
+│   │   ├── python          
 │   │   ├── ...
-│   ├── postgresql
-│   │   ├── ffs
+│   ├── mysql              # Datastore Connection using MySQL
+│   │   ├── sas
+│   │   ├── ...
+│   ├── postgresql         # Datastore Connection using PostgreSQL
+│   │   ├── sas
 │   │   ├── ...
 │   ├── ...  
 ```
 
 
-## Flat File Simulation (ffs)
-This repository introduces Flat File Simulation, a standalone local prototyping environment. 
+## Flat File Emulation (ffe)
+This repository introduces Flat File Emulation, a standalone local prototyping environment. 
 FFS allows you to develop application prototypes free of dependencies on IT and various software licenses, while using the same sas-appfitter generic interface functions so that any code you write will be portable to other environments when the time comes to scale up.
 
 
 The 'flat files' are SAS datasets serialised to, and deserialised from, JSON files stored locally. 
-Variations are used for simulating a client-server connection (inspired by [H54S](https://github.com/Boemska/h54s)) and writing to a persistent datastore (inspired by [Pickle](https://github.com/python/cpython/blob/3.7/Lib/pickle.py))
+Variations are used for emulating a client-server connection (inspired by [H54S](https://github.com/Boemska/h54s)) and writing to a persistent datastore (inspired by [Pickle](https://github.com/python/cpython/blob/3.7/Lib/pickle.py))
 
 
-Select the ffs family of adapters if you are developing a prototype
+Select the ffe family of adapters if you are developing a prototype
 1. No dependencies on SAS licenses beyond SAS BASE 9.4
-2. No need to set up a webserver or database - uses local files instead to simulate the same functionality
+2. No need to set up a server or database - uses local files instead to simulate the same functionality
 3. Uses the appfitter interface so that other functionality can easily be plugged in later 
+
+
+
+## Generic Interface Methods
+
+TODO
 
 
 ## Licensing
