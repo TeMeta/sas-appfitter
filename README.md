@@ -18,10 +18,10 @@ The folder structure organises them first by connection type, then by language (
 ```
 .
 ├── ...
-├── adapters                # All interface adapters
-│   ├── ffe                   # Connection using Flat File Emulation
-│   │   ├── sas                 # Adapters for the SAS environment
-│   │   ├── javascript          # Adapters for the SAS environment
+├── adapters              # All interface adapters
+│   ├── ffe                 # Connection using Flat File Emulation
+│   │   ├── sas               # Adapters for the SAS environment
+│   │   ├── javascript        # Adapters for the SAS environment
 │   │   ├── python          
 │   │   ├── vba
 │   │   ├── ...             
@@ -33,12 +33,20 @@ The folder structure organises them first by connection type, then by language (
 │   │   ├── sas
 │   │   ├── python          
 │   │   ├── ...
-│   ├── viya               # Connection using SAS Viya
+│   ├── spotfire           # Connection using Spotfire
+│   │   ├── sas
+│   │   ├── ironpython
+│   │   ├── javascript
+│   │   ├── ...
+│   ├── qlik               # Connection using Qlik Sense
 │   │   ├── sas
 │   │   ├── ...
 │   ├── saspy              # Connection using SASPy
 │   │   ├── sas
 │   │   ├── python          
+│   │   ├── ...
+│   ├── viya               # Connection using SAS Viya
+│   │   ├── sas
 │   │   ├── ...
 │   ├── mysql              # Datastore Connection using MySQL
 │   │   ├── sas
