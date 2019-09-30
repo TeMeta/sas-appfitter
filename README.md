@@ -2,16 +2,15 @@
 
 
 ## What is sas-appfitter?
-Adapters that use a generic interface to allow SAS® programs to pass datasets to and from other environments, data sources and languages.
+A collection of adapters that use a generic interface to allow SAS® programs to pass datasets to and from other environments, data sources and languages.
 
-The idea is to simplify SAS-powered app prototype development by providing interfaces and architecture up-front for a variety of languages, connections types and datastores.
+The idea is to simplify SAS-powered app prototype development by providing interfaces and architecture up-front for a variety of languages, connections types and datastores. Appfitter was inspired by [H54S from Boemska](https://github.com/Boemska/h54s) and builds on the concept by extending it into a collection of compatible connectors
 
-When the requirements of your application change, the adapters can be switched without having to modify the existing programs. 
+All adapters in the collection implement a generic interface to provide flexibility for your application prototype. Database type, API connections, and even the entire front-end can be swapped out without having to modify other components. Simply change the adapter for one that fits the new connection type. When requirements change, your application can too without any rewriting. 
 
-Database type, API connections and even the entire front-end can be swapped out. Adapters to the generic interface provide flexibility for your application/prototype, which should in turn significantly reduce the cost of development and migration on your app.
+This library is intended to reduce the cost of development and migration on your app as well as make it easier to build prototypes. Anyone who needs to make a modification or build a new connection is welcomed to contribute it back to the collection.
 
-
-## Finding your way around
+## Finding your way around the adaptors
 
 The folder structure organises them first by connection type, then by language (the below is for illustrative purposes)
 
@@ -28,7 +27,11 @@ The folder structure organises them first by connection type, then by language (
 │   ├── h54s               # Connection using Boemska HTML5 Adapter for SAS
 │   │   ├── sas
 │   │   ├── javascript
-│   │   ├── ...    
+│   │   ├── ...
+│   ├── saspy              # Connection using SASPy
+│   │   ├── sas
+│   │   ├── python          
+│   │   ├── ...
 │   ├── pandas             # Connection using Pandas
 │   │   ├── sas
 │   │   ├── python          
@@ -40,10 +43,6 @@ The folder structure organises them first by connection type, then by language (
 │   │   ├── ...
 │   ├── qlik               # Connection using Qlik Sense
 │   │   ├── sas
-│   │   ├── ...
-│   ├── saspy              # Connection using SASPy
-│   │   ├── sas
-│   │   ├── python          
 │   │   ├── ...
 │   ├── viya               # Connection using SAS Viya
 │   │   ├── sas
@@ -76,8 +75,30 @@ Select the ffe family of adapters if you are developing a prototype
 
 ## Generic Interface Methods
 
-TODO
+These are shown in the form of SAS macros since this project started with SAS adapters. The same principle applies to functions/methods in other languages.
 
+SAS adapters receive datasets that have been passed from other components in the application that were built using a non-SAS platform. What they all have in common is the protocol of passing flat tables rather than parameters. If parameters need to be passed they can be packed into rows or columns instead.
+
+```sas
+%macro getStreamDset(obj=, outdset=)
+```
+Establish a datastore connection. `name` is the reference given to the created datastore and `targ` is a string (e.g. a name or query) describing which target in the datastore is selected. 
+
+```sas
+%macro setupDatastore(name=, targ=)
+```
+Establish a datastore connection. `name` is the reference given to the created datastore and `targ` is a string (e.g. a name or query) describing which target in the datastore is selected. 
+
+```sas
+%macro teardownDatastore(name=);
+```
+This cleans up and closes the named datastore connection if necessary.
+
+
+## Links to available adapters
+
+[FFE]
+[H54S]
 
 ## Licensing
 
