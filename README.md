@@ -2,7 +2,7 @@
 
 
 ## What is sas-appfitter?
-A collection of adapters that use a generic interface to allow SAS® programs to pass datasets (flat tables of strings and numerics) to and retrieve them from other environments, data sources and languages.
+A collection of adapters that implement a common interface allowing SAS® programs to pass datasets (flat tables of strings and numerics) to and from other environments, data sources and languages.
 
 The idea is to simplify SAS-powered app prototype development by providing interfaces and architecture up-front for a variety of languages, connections types and datastores. Appfitter was inspired by [H54S from Boemska](https://github.com/Boemska/h54s) and builds on the concept by extending it into a collection of compatible connectors
 
