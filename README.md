@@ -28,11 +28,7 @@ The folder structure organises them first by connection type, then by language (
 │   │   ├── sas
 │   │   ├── javascript
 │   │   ├── ...
-│   ├── saspy              # Connection using SASPy
-│   │   ├── sas
-│   │   ├── python          
-│   │   ├── ...
-│   ├── pandas             # Connection using Pandas
+│   ├── flask              # Connection using Flask
 │   │   ├── sas
 │   │   ├── python          
 │   │   ├── ...
@@ -57,9 +53,9 @@ The folder structure organises them first by connection type, then by language (
 ```
 
 
-## Flat File Emulation (ffe)
+## Flat File Emulation (FFE)
 This repository introduces Flat File Emulation, a standalone local prototyping environment. 
-FFS allows you to develop application prototypes free of dependencies on IT and various software licenses, while using the same sas-appfitter generic interface functions so that any code you write will be portable to other environments when the time comes to scale up.
+FFE allows you to develop application prototypes free of dependencies on IT and various software licenses, while using the same sas-appfitter generic interface functions so that any code you write will be portable to other environments when the time comes to scale up.
 
 
 The 'flat files' are SAS datasets serialised to, and deserialised from, JSON files stored locally. 
