@@ -10,11 +10,14 @@ Private Const StreamPath = ".\"
 Private Const DataStorePath = ".\"
 Private Const SASProcessPath = ".\"
 
-' SAS execution options settings for batch files
 Private Const SASExeFile = "C:\Program Files\SASHome\SASFoundation\9.4\sas.exe"
 Private Const SASCfgFile = "C:\Program Files\SASHome\SASFoundation\9.4\nls\u8\sasv9.cfg"
 
 Private DataStorePaths As New Scripting.Dictionary
+
+Public Const SuccessString = "Response Received"
+Public Const RefreshPeriodSecs = 1
+Public Const TimeoutSecs = 10
 
 
 Public Sub SetupDatastore(Name As String, Targ As String)
@@ -292,7 +295,7 @@ Public Function WaitForStreamResponse(SubmitTime As Date) As String
     ' Return a value only when result found
     Dim Response As String
     Dim TimeOutTime, fso, f
-    TimeOutTime = DateAdd("s", 10, Now)
+    TimeOutTime = DateAdd("s", TimeoutSecs, Now)
     
     Set fso = CreateObject("Scripting.FileSystemObject")
     
@@ -302,9 +305,9 @@ Public Function WaitForStreamResponse(SubmitTime As Date) As String
     If Len(Dir(StreamPath & "fromsas.json")) = 0 Then
         ' File does not exist yet, wait for creation
         Do Until Trim(Response & vbNullString) <> vbNullString Or Now >= TimeOutTime
-            Application.Wait DateAdd("s", 1, Now)
+            Application.Wait DateAdd("s", RefreshPeriodSecs, Now)
             If Len(Dir(StreamPath & "fromsas.json")) <> 0 Then
-                Response = "Response received"
+                Response = SuccessString
             End If
         Loop
     
@@ -313,9 +316,9 @@ Public Function WaitForStreamResponse(SubmitTime As Date) As String
         Set f = fso.GetFile(StreamPath & "fromsas.json")
         
         Do Until Trim(Response & vbNullString) <> vbNullString Or Now >= TimeOutTime
-            Application.Wait DateAdd("s", 1, Now)
+            Application.Wait DateAdd("s", RefreshPeriodSecs, Now)
             If f.DateLastModified > SubmitTime Then
-                Response = "Response received"
+                Response = SuccessString
             End If
         Loop
     End If
@@ -324,7 +327,7 @@ Public Function WaitForStreamResponse(SubmitTime As Date) As String
     UserForm1.MousePointer = fmMousePointerDefault
     
     If Trim(Response & vbNullString) = vbNullString Then
-        Response = "Timed out waiting for response after 10 seconds"
+        Response = "Timed out waiting for response after " & TimeoutSecs & " seconds"
     End If
     
     WaitForStreamResponse = Response
