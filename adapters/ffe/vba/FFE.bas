@@ -293,14 +293,19 @@ End Sub
 Public Function WaitForStreamResponse(SubmitTime As Date) As String
     ' Wait until SAS process returns result (new timestamp on json file)
     ' Return a value only when result found
-    Dim Response As String
     Dim TimeOutTime, fso, f
+    Dim Response As String
+    Dim UF As UserForm
+                                                                    
     TimeOutTime = DateAdd("s", TimeoutSecs, Now)
     
     Set fso = CreateObject("Scripting.FileSystemObject")
     
     Application.Cursor = xlWait
-    UserForm1.MousePointer = fmMousePointerHourGlass
+                                                                        
+    For Each UF in VBA.Userforms
+        UF.MousePointer = fmMousePointerHourGlass
+    Next UF
     
     If Len(Dir(StreamPath & "fromsas.json")) = 0 Then
         ' File does not exist yet, wait for creation
@@ -324,7 +329,10 @@ Public Function WaitForStreamResponse(SubmitTime As Date) As String
     End If
     
     Application.Cursor = xlDefault
-    UserForm1.MousePointer = fmMousePointerDefault
+    
+    For Each UF In VBA.UserForms
+        UF.MousePointer = fmMousePointerDefault
+    Next UF
     
     If Trim(Response & vbNullString) = vbNullString Then
         Response = "Timed out waiting for response after " & TimeoutSecs & " seconds"
