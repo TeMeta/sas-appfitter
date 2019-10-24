@@ -18,8 +18,8 @@ Private Sub DebugButton_Click()
 End Sub
 
 Private Sub FavBox_Click()
-  SelectX.Value = Split(FavBox.Value)(0)
-  SelectY.Value = Split(FavBox.Value)(2)
+  SelectY.Value = Split(FavBox.Value)(0)
+  SelectX.Value = Split(FavBox.Value)(2)
 End Sub
 
 Private Sub RefreshStream()
@@ -49,7 +49,7 @@ Private Sub RefreshFavs()
     FavBox.Clear
 
     For Each Row In Favourites
-       FavBox.AddItem StrConv(Row("xaxis"), vbProperCase) & " vs " & StrConv(Row("yaxis"), vbProperCase)
+       FavBox.AddItem StrConv(Row("yaxis"), vbProperCase) & " vs " & StrConv(Row("xaxis"), vbProperCase)
     Next Row
 End Sub
 
