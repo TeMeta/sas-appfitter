@@ -10,7 +10,7 @@ All adapters in the collection implement a generic interface to provide flexibil
 
 This library is intended to reduce the cost of development and migration on your app as well as make it easier to build prototypes. Anyone who needs to make a modification or build a new connection is welcomed to contribute it back to the collection.
 
-## Finding your way around the adaptors
+## Finding your way around the adapters
 
 The folder structure organises them first by connection type, then by language (the below is for illustrative purposes)
 
