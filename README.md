@@ -109,8 +109,14 @@ Take dataset `indset` and write it to table `obj` in the named datastore `name`
 
 ## Links to available adapters
 
-[FFE]
-[H54S]
+### [FFE](https://github.com/TeMeta/sas-appfitter/tree/master/adapters/ffe)
+* SAS
+* Python
+* VBA
+
+### [H54S](https://github.com/TeMeta/sas-appfitter/tree/master/adapters/h54s)
+* SAS
+* JS
 
 ## Licensing
 
